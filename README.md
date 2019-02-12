@@ -2,7 +2,7 @@
 
 
 1 . [:mortar_board:mongo-shard-docker-compose](##1-mongo-shard-docker-compose)
-## 1. mongo-shard-docker-compose
+## mongo-shard-docker-compose
 
 ### Init Process
 
