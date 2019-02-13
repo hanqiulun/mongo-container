@@ -33,11 +33,17 @@ spec:
         - name: mongoshx-1
           containerPort: 27017
         volumeMounts:
-            - name: mongoshx-1
-              mountPath: /data/db
+          - name: mongoshx-1
+            mountPath: /data/db
+          - name: keyfile
+            mountPath: "/data/keyfile"
+            readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
+        - name: keyfile
+          secret:
+            secretName: keyfile
         - name: mongoshx-1
           #persistentVolumeClaim:
           #  claimName: mongoshx-1
@@ -77,11 +83,17 @@ spec:
         - name: mongoshx-2
           containerPort: 27017
         volumeMounts:
-            - name: mongoshx-2
-              mountPath: /data/db
+          - name: mongoshx-2
+            mountPath: /data/db
+          - name: keyfile
+            mountPath: "/data/keyfile"
+            readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
+        - name: keyfile
+          secret:
+            secretName: keyfile
         - name: mongoshx-2
           #persistentVolumeClaim:
           #  claimName: mongoshx-2
@@ -121,11 +133,17 @@ spec:
         - name: mongoshx-3
           containerPort: 27017
         volumeMounts:
-            - name: mongoshx-3
-              mountPath: /data/db
+          - name: mongoshx-3
+            mountPath: /data/db
+          - name: keyfile
+            mountPath: "/data/keyfile"
+            readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
+        - name: keyfile
+          secret:
+            secretName: keyfile
         - name: mongoshx-3
           #persistentVolumeClaim:
           #  claimName: mongoshx-3

@@ -24,6 +24,12 @@ for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
 done
 
 
+# create secret keyfile
+openssl rand -base64 64 > keyfile
+chmod 600 keyfile
+
+kubectl create secret generic keyfile --from-file=keyfile
+
 #set -e
 
 

@@ -35,11 +35,17 @@ spec:
         - name: mongos1
           containerPort: 27017
         volumeMounts:
+            - name: keyfile
+              mountPath: "/data/keyfile"
+              readOnly: true
             - name: mongos1
               mountPath: /data/db
         command: ["mongos"]
-        args: ["--configdb", "cfgrs/mongocfg1:27019,mongocfg2:27019,mongocfg3:27019", "--bind_ip_all"]
+        args: ["--configdb", "cfgrs/mongocfg1:27019,mongocfg2:27019,mongocfg3:27019", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
+        - name: keyfile
+          secret:
+            secretName: keyfile
         - name: mongos1
 #          persistentVolumeClaim:
 #            claimName: mongos1
@@ -81,11 +87,17 @@ spec:
         - name: mongos2
           containerPort: 27017
         volumeMounts:
+            - name: keyfile
+              mountPath: "/data/keyfile"
+              readOnly: true
             - name: mongos2
               mountPath: /data/db
         command: ["mongos"]
-        args: ["--configdb", "cfgrs/mongocfg1:27019,mongocfg2:27019,mongocfg3:27019", "--bind_ip_all"]
+        args: ["--configdb", "cfgrs/mongocfg1:27019,mongocfg2:27019,mongocfg3:27019", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
+        - name: keyfile
+          secret:
+            secretName: keyfile
         - name: mongos2
 #          persistentVolumeClaim:
 #            claimName: mongos2
