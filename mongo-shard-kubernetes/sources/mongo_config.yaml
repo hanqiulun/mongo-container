@@ -33,8 +33,8 @@ spec:
           containerPort: 27019
         volumeMounts:
             - name: keyfile
-              mountPath: "/data/keyfile"
-              # readOnly: true
+              mountPath: "/data"
+              readOnly: true
             - name: mongocfg1
               mountPath: /data/db
         command: ["mongod"]
@@ -82,8 +82,8 @@ spec:
           containerPort: 27019
         volumeMounts:
             - name: keyfile
-              mountPath: "/data/keyfile"
-              # readOnly: true
+              mountPath: "/data"
+              readOnly: true
             - name: mongocfg2
               mountPath: /data/db
         command: ["mongod"]
@@ -131,8 +131,8 @@ spec:
           containerPort: 27019
         volumeMounts:
             - name: keyfile
-              mountPath: "/data/keyfile"
-              # readOnly: true
+              mountPath: "/data"
+              readOnly: true
             - name: mongocfg3
               mountPath: /data/db
         command: ["mongod"]

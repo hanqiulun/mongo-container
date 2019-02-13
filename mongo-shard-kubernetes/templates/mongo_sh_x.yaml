@@ -36,8 +36,8 @@ spec:
           - name: mongoshx-1
             mountPath: /data/db
           - name: keyfile
-            mountPath: "/data/keyfile"
-            # readOnly: true
+            mountPath: "/data"
+            readOnly: true
         command: ["mongod"]
         args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
@@ -86,8 +86,8 @@ spec:
           - name: mongoshx-2
             mountPath: /data/db
           - name: keyfile
-            mountPath: "/data/keyfile"
-            # readOnly: true
+            mountPath: "/data"
+            readOnly: true
         command: ["mongod"]
         args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
@@ -136,8 +136,8 @@ spec:
           - name: mongoshx-3
             mountPath: /data/db
           - name: keyfile
-            mountPath: "/data/keyfile"
-            # readOnly: true
+            mountPath: "/data"
+            readOnly: true
         command: ["mongod"]
         args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
