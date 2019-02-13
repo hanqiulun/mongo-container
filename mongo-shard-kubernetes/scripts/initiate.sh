@@ -28,7 +28,7 @@ done
 
 
 #Creating config nodes
-kubectl create -f  mongo_config.yaml
+kubectl create -f  $BASE"mongo_config.yaml"
 
 #Waiting for containers
 echo "Waiting config containers"
@@ -51,7 +51,7 @@ kubectl exec -it $POD_NAME -- bash -c "mongo --port 27019 --eval '$CMD'"
 
 #Creating shard nodes
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
-    kubectl create -f  mongo_sh_$rs.yaml
+    kubectl create -f  $BASE"mongo_sh_"$rs".yaml"
 done
 
 #Waiting for containers
@@ -84,7 +84,7 @@ done
 
 
 #Initializing routers
-kubectl create -f mongos.yaml
+kubectl create -f $BASE"mongos.yaml"
 echo "Waiting router containers"
 kubectl get pods | grep "mongos[0-9]" | grep "ContainerCreating"
 while [ $? -eq 0 ]
