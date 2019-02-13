@@ -34,7 +34,7 @@ spec:
         volumeMounts:
             - name: keyfile
               mountPath: "/data/keyfile"
-              readOnly: true
+              # readOnly: true
             - name: mongocfg1
               mountPath: /data/db
         command: ["mongod"]
@@ -83,7 +83,7 @@ spec:
         volumeMounts:
             - name: keyfile
               mountPath: "/data/keyfile"
-              readOnly: true
+              # readOnly: true
             - name: mongocfg2
               mountPath: /data/db
         command: ["mongod"]
@@ -132,7 +132,7 @@ spec:
         volumeMounts:
             - name: keyfile
               mountPath: "/data/keyfile"
-              readOnly: true
+              # readOnly: true
             - name: mongocfg3
               mountPath: /data/db
         command: ["mongod"]

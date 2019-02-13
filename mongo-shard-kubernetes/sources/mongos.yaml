@@ -37,7 +37,7 @@ spec:
         volumeMounts:
             - name: keyfile
               mountPath: "/data/keyfile"
-              readOnly: true
+              # readOnly: true
             - name: mongos1
               mountPath: /data/db
         command: ["mongos"]
@@ -89,7 +89,7 @@ spec:
         volumeMounts:
             - name: keyfile
               mountPath: "/data/keyfile"
-              readOnly: true
+              # readOnly: true
             - name: mongos2
               mountPath: /data/db
         command: ["mongos"]

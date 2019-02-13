@@ -37,7 +37,7 @@ spec:
             mountPath: /data/db
           - name: keyfile
             mountPath: "/data/keyfile"
-            readOnly: true
+            # readOnly: true
         command: ["mongod"]
         args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
@@ -87,7 +87,7 @@ spec:
             mountPath: /data/db
           - name: keyfile
             mountPath: "/data/keyfile"
-            readOnly: true
+            # readOnly: true
         command: ["mongod"]
         args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
@@ -137,7 +137,7 @@ spec:
             mountPath: /data/db
           - name: keyfile
             mountPath: "/data/keyfile"
-            readOnly: true
+            # readOnly: true
         command: ["mongod"]
         args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
