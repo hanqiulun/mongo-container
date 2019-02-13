@@ -38,7 +38,7 @@ spec:
             - name: mongocfg1
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:

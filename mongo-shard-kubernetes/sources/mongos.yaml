@@ -46,6 +46,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongos1
 #          persistentVolumeClaim:
 #            claimName: mongos1
@@ -98,6 +99,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongos2
 #          persistentVolumeClaim:
 #            claimName: mongos2

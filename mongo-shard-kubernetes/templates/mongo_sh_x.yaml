@@ -44,6 +44,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongoshx-1
           #persistentVolumeClaim:
           #  claimName: mongoshx-1
@@ -94,6 +95,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongoshx-2
           #persistentVolumeClaim:
           #  claimName: mongoshx-2
@@ -144,6 +146,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongoshx-3
           #persistentVolumeClaim:
           #  claimName: mongoshx-3
