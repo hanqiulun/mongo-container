@@ -38,7 +38,7 @@ spec:
             - name: mongocfg1
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--noauth", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -87,7 +87,7 @@ spec:
             - name: mongocfg2
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--noauth", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -136,7 +136,7 @@ spec:
             - name: mongocfg3
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--noauth", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile"]
       volumes:
         - name: keyfile
           secret:

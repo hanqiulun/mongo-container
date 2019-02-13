@@ -46,6 +46,7 @@ do
   kubectl get pods | grep "mongocfg" | grep "ContainerCreating"
 done
 
+sleep 5
 
 #Initializating configuration nodes
 POD_NAME=$(kubectl get pods | grep "mongocfg1" | awk '{print $1;}')
