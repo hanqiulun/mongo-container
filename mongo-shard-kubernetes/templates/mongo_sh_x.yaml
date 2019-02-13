@@ -1,0 +1,131 @@
+# Mongo shard replica set 1 node 1
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongoshx-1
+  labels:
+    run: mongoshx-1
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    run: mongoshx-1
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mongoshx-1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongoshx-1
+        run: mongoshx-1
+    spec:
+      restartPolicy: Always
+      hostname: mongoshx-1
+      containers:
+      - image: mongo:latest
+        name: mongoshx-1
+        ports:
+        - name: mongoshx-1
+          containerPort: 27017
+        volumeMounts:
+            - name: mongoshx-1
+              mountPath: /data/db
+        command: ["mongod"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+      volumes:
+        - name: mongoshx-1
+          #persistentVolumeClaim:
+          #  claimName: mongoshx-1
+---
+# Mongo shard replica set 1 node 2
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongoshx-2
+  labels:
+    run: mongoshx-2
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    run: mongoshx-2
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mongoshx-2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongoshx-2
+        run: mongoshx-2
+    spec:
+      restartPolicy: Always
+      hostname: mongoshx-2
+      containers:
+      - image: mongo:latest
+        name: mongoshx-2
+        ports:
+        - name: mongoshx-2
+          containerPort: 27017
+        volumeMounts:
+            - name: mongoshx-2
+              mountPath: /data/db
+        command: ["mongod"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+      volumes:
+        - name: mongoshx-2
+          #persistentVolumeClaim:
+          #  claimName: mongoshx-2
+---
+# Mongo shard replica set 1 node 1
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongoshx-3
+  labels:
+    run: mongoshx-3
+spec:
+  ports:
+  - port: 27017
+    protocol: TCP
+  selector:
+    run: mongoshx-3
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mongoshx-3
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: mongoshx-3
+        run: mongoshx-3
+    spec:
+      restartPolicy: Always
+      hostname: mongoshx-3
+      containers:
+      - image: mongo:latest
+        name: mongoshx-3
+        ports:
+        - name: mongoshx-3
+          containerPort: 27017
+        volumeMounts:
+            - name: mongoshx-3
+              mountPath: /data/db
+        command: ["mongod"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--noauth", "--port", "27017", "--bind_ip_all"]
+      volumes:
+        - name: mongoshx-3
+          #persistentVolumeClaim:
+          #  claimName: mongoshx-3
