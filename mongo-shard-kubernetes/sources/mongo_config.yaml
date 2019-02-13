@@ -38,11 +38,12 @@ spec:
             - name: mongocfg1
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all"]
       volumes:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongocfg1
           #persistentVolumeClaim:
           #  claimName: mongocfg1
@@ -92,6 +93,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongocfg2
           #persistentVolumeClaim:
           #  claimName: mongocfg2
@@ -141,6 +143,7 @@ spec:
         - name: keyfile
           secret:
             secretName: keyfile
+            defaultMode: 0400
         - name: mongocfg3
           #persistentVolumeClaim:
           #  claimName: mongocfg3
