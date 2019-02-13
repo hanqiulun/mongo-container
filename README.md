@@ -2,6 +2,8 @@
 
 
 1 . [:mortar_board:mongo-shard-docker-compose](##1-mongo-shard-docker-compose)
+2 . [:mortar_board:mongo-shard-kubernetes](##2-mongo-shard-kubernetes)
+
 ## mongo-shard-docker-compose
 
 ### Init Process
@@ -67,3 +69,6 @@ mongos> sh.shardCollection("python.user",{"id":1})
 mongos> sh.status()
 //collection的primary shard是shard02,所以一开始的chunk会在shard02分裂，后来发生chunk迁移。
 ```
+
+
+## mongo-shard-kubernetes
