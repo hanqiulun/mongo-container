@@ -2,9 +2,10 @@
 
 
 1 . [:mortar_board:mongo-shard-docker-compose](##1-mongo-shard-docker-compose)
+
 2 . [:mortar_board:mongo-shard-kubernetes](##2-mongo-shard-kubernetes)
 
-## mongo-shard-docker-compose
+## 1 mongo-shard-docker-compose
 
 ### Init Process
 
@@ -71,4 +72,4 @@ mongos> sh.status()
 ```
 
 
-## mongo-shard-kubernetes
+## 2 mongo-shard-kubernetes
