@@ -36,10 +36,10 @@ spec:
           - name: mongoshx-1
             mountPath: /data/db
           - name: keyfile
-            mountPath: "/data"
+            mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -86,10 +86,10 @@ spec:
           - name: mongoshx-2
             mountPath: /data/db
           - name: keyfile
-            mountPath: "/data"
+            mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -136,10 +136,10 @@ spec:
           - name: mongoshx-3
             mountPath: /data/db
           - name: keyfile
-            mountPath: "/data"
+            mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:

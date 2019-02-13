@@ -33,12 +33,12 @@ spec:
           containerPort: 27019
         volumeMounts:
             - name: keyfile
-              mountPath: "/data"
+              mountPath: "/data/keyfile"
               readOnly: true
             - name: mongocfg1
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -82,12 +82,12 @@ spec:
           containerPort: 27019
         volumeMounts:
             - name: keyfile
-              mountPath: "/data"
+              mountPath: "/data/keyfile"
               readOnly: true
             - name: mongocfg2
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -131,12 +131,12 @@ spec:
           containerPort: 27019
         volumeMounts:
             - name: keyfile
-              mountPath: "/data"
+              mountPath: "/data/keyfile"
               readOnly: true
             - name: mongocfg3
               mountPath: /data/db
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
