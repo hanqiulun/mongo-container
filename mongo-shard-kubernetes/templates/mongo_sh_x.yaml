@@ -127,12 +127,12 @@ spec:
           containerPort: 27017
         volumeMounts:
           - name: mongoshx-1
-            mountPath: /data/db
+            mountPath: /mongoshx-1/db
           - name: keyfile
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-1/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -178,12 +178,12 @@ spec:
           containerPort: 27017
         volumeMounts:
           - name: mongoshx-2
-            mountPath: /data/db
+            mountPath: /mongoshx-2/db
           - name: keyfile
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-2/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -229,12 +229,12 @@ spec:
           containerPort: 27017
         volumeMounts:
           - name: mongoshx-3
-            mountPath: /data/db
+            mountPath: /mongoshx-3/db
           - name: keyfile
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/data/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-3/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
