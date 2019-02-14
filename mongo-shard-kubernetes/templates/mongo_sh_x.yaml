@@ -132,7 +132,7 @@ spec:
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-1/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-1/db/mongoshx-1", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -183,7 +183,7 @@ spec:
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-2/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-2/db/mongoshx-2", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -234,7 +234,7 @@ spec:
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-3/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-3/db/mongoshx-3", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
