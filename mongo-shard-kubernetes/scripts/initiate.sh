@@ -12,6 +12,7 @@ function image()
       cp $SHARDTEMP $new_file_name
       sed -i "s/mongoshx/mongosh$1/g" $new_file_name
       sed -i "s/rsx/rs$1/g" $new_file_name
+      sed -i "s/mongox/mongo$1/g" $new_file_name
     }
 
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
