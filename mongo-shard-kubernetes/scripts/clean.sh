@@ -22,3 +22,10 @@ echo -e "\nDeleting shard yaml"
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
     rm -rf $BASE"mongo_sh_"$rs".yaml"
 done
+
+echo -e "\nDeleting keyfile"
+
+
+rm -rf keyfile
+
+kubectl delete secrets keyfile
