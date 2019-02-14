@@ -19,6 +19,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: mongos1
+  namespace: mongo
 spec:
   replicas: 1
   template:
@@ -73,6 +74,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: mongos2
+  namespace: mongo
 spec:
   replicas: 1
   template:
