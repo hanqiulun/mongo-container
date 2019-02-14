@@ -12,8 +12,8 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Delete
   glusterfs:
-    endpoints: "glusterfs-cluster"
-    path: "models"
+    endpoints: "mongox-1"
+    path: "mongox-1"
     readOnly: false
 ---
 apiVersion: v1
@@ -43,8 +43,8 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Delete
   glusterfs:
-    endpoints: "glusterfs-cluster"
-    path: "models"
+    endpoints: "mongox-2"
+    path: "mongox-2"
     readOnly: false
 ---
 apiVersion: v1
@@ -74,8 +74,8 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Delete
   glusterfs:
-    endpoints: "glusterfs-cluster"
-    path: "models"
+    endpoints: "mongox-3"
+    path: "mongox-3"
     readOnly: false
 ---
 apiVersion: v1
@@ -121,10 +121,6 @@ spec:
       hostname: mongoshx-1
       containers:
       - image: mongo:latest
-        lifecycle:
-          postStart:
-            exec:
-              command: ["mkdir", "/mongoshx-1/db/mongoshx-1"]
         name: mongoshx-1
         ports:
         - name: mongoshx-1
@@ -136,7 +132,7 @@ spec:
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-1/db/mongoshx-1", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-1/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
@@ -176,10 +172,6 @@ spec:
       hostname: mongoshx-2
       containers:
       - image: mongo:latest
-        lifecycle:
-          postStart:
-            exec:
-              command: ["mkdir", "/mongoshx-2/db/mongoshx-2"]
         name: mongoshx-2
         ports:
         - name: mongoshx-2
@@ -191,7 +183,7 @@ spec:
             mountPath: "/data/keyfile"
             readOnly: true
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-2/db/mongoshx-2", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-2/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
