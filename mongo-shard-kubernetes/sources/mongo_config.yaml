@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongocfg1
+  namespace: mongo
   labels:
     run: mongocfg1
 spec:
@@ -52,6 +53,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongocfg2
+  namespace: mongo
   labels:
     run: mongocfg2
 spec:
@@ -102,6 +104,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongocfg3
+  namespace: mongo
   labels:
     run: mongocfg3
 spec:

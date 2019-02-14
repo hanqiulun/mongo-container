@@ -28,7 +28,7 @@ done
 openssl rand -base64 64 > keyfile
 chmod 600 keyfile
 
-kubectl create secret generic keyfile --from-file=keyfile
+kubectl create secret generic keyfile --from-file=keyfile -n mongo
 
 #set -e
 
