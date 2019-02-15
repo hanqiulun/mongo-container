@@ -1,9 +1,9 @@
-# mongo-container
+# Mongo-Container
 
 
-1 . [:mortar_board:mongo-shard-docker-compose](##1-mongo-shard-docker-compose)
+1 . [:mortar_board:mongo-shard-docker-compose](##1-mongo-shard-docker-compose) :heavy_check_mark: :heavy_check_mark:
 
-2 . [:mortar_board:mongo-shard-kubernetes](##2-mongo-shard-kubernetes)
+2 . [:mortar_board:mongo-shard-kubernetes](##2-mongo-shard-kubernetes) :heavy_check_mark: :heavy_check_mark:
 
 ## 1 mongo-shard-docker-compose
 
