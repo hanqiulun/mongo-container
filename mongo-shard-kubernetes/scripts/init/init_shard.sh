@@ -55,11 +55,12 @@ function add_shard()
 
 function init_shard()
     {
+        generate_depand $1
         generate_sh_yaml $1
         add_shard $1
     }
 
 
 
-init_shard $1
+init_shard 1
 
