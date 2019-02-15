@@ -23,7 +23,7 @@ function generate_sh_yaml()
       sed -i "s/mongoshx/mongosh$1/g" $new_file_name
       sed -i "s/rsx/rs$1/g" $new_file_name
       sed -i "s/mongox/mongo$1/g" $new_file_name
-      kubectl create -f  $BASE"mongo_sh_"$rs".yaml"
+      kubectl create -f  $BASE"mongo_sh_"$1".yaml"
     }
 
 function add_shard()
@@ -39,15 +39,15 @@ function add_shard()
         kubectl get pods | grep "mongosh" | grep "ContainerCreating"
         done
         # Initializating shard nodes
-        POD_NAME=$(kubectl get pods | grep "mongosh$rs-1" | awk '{print $1;}')
+        POD_NAME=$(kubectl get pods | grep "mongosh$1-1" | awk '{print $1;}')
         echo "Pod Name: $POD_NAME"
-        CMD="rs.initiate({ _id : \"rs$rs\", members: [{ _id : 0, host : \"mongosh$rs-1:27017\" },{ _id : 1, host : \"mongosh$rs-2:27017\" },{ _id : 2, host : \"mongosh$rs-3:27017\" }]})"
+        CMD="rs.initiate({ _id : \"rs$1\", members: [{ _id : 0, host : \"mongosh$1-1:27017\" },{ _id : 1, host : \"mongosh$1-2:27017\" },{ _id : 2, host : \"mongosh$1-3:27017\" }]})"
         #Executing cmd inside pod
         echo $CMD
         kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$CMD'"
         # #Adding shard to cluster
         POD_NAME=$(kubectl get pods | grep "mongos1" | awk '{print $1;}')
-        CMD="sh.addShard(\"rs$rs/mongosh$rs-1:27017\")"
+        CMD="sh.addShard(\"rs$1/mongosh$1-1:27017\")"
         #Executing cmd inside pod
         echo $CMD
         kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$CMD'"
