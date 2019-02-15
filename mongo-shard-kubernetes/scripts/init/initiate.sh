@@ -74,8 +74,6 @@ do
   kubectl get pods | grep "mongosh" | grep "ContainerCreating"
 done
 
-
-
 #Initializating shard nodes
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
     echo -e "\n\n---------------------------------------------------"
@@ -116,7 +114,13 @@ for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
     #Executing cmd inside pod
     echo $CMD
     kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$CMD'"
-
+    echo -e "\033[32m Create Root User!!! \033[0m"
+    mongo_command=$(cat scripts/test.js)
+    kubectl exec -it $POD_NAME -- bash -c "mongo -u root -p --eval '$mongo_command'"
 done
 
 echo -e "\033[32m All done!!! \033[0m"
+
+
+
+
