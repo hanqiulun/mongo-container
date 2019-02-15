@@ -29,6 +29,7 @@ function generate_sh_yaml()
 function add_shard()
     {
         #Waiting for containers
+        sleep 10
         POD_STATUS= kubectl get pods | grep "mongosh" | grep "ContainerCreating"
         echo "Waiting shard containers"
         kubectl get pods | grep "mongosh" | grep "ContainerCreating"
@@ -50,7 +51,7 @@ function add_shard()
         CMD="sh.addShard(\"rs$1/mongosh$1-1:27017\")"
         #Executing cmd inside pod
         echo $CMD
-        kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$CMD'"
+        kubectl exec -it $POD_NAME -- bash -c "mongo -u root -p --eval '$CMD'"
     }
 
 function init_shard()
