@@ -64,5 +64,3 @@ function init_shard()
 
 
 
-init_shard 1
-
