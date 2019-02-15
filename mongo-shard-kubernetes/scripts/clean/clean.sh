@@ -21,8 +21,8 @@ echo -e "\nDeleting shard yaml"
 
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
     rm -rf $BASE"mongo_sh_"$rs".yaml"
-    ../volume_op.sh delete_volume $rs
-    ../brick_op.sh delete_dir $rs
+    scripts/volume_op.sh delete_volume $rs
+    scripts/brick_op.sh delete_dir $rs
 done
 
 echo -e "\nDeleting keyfile"
