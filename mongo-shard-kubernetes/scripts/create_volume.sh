@@ -1,37 +1,38 @@
-gluster volume create mongo1-1 stripe 2 transport tcp node02:/opt/mongo1-1 node03:/opt/mongo1-1 node04:/opt/mongo1-1 node05:/opt/mongo1-1 force
-gluster volume create mongo1-2 stripe 2 transport tcp node02:/opt/mongo1-2 node03:/opt/mongo1-2 node04:/opt/mongo1-2 node05:/opt/mongo1-2 force
-gluster volume create mongo1-3 stripe 2 transport tcp node02:/opt/mongo1-3 node03:/opt/mongo1-3 node04:/opt/mongo1-3 node05:/opt/mongo1-3 force
-gluster volume create mongo2-1 stripe 2 transport tcp node02:/opt/mongo2-1 node03:/opt/mongo2-1 node04:/opt/mongo2-1 node05:/opt/mongo2-1 force
-gluster volume create mongo2-2 stripe 2 transport tcp node02:/opt/mongo2-2 node03:/opt/mongo2-2 node04:/opt/mongo2-2 node05:/opt/mongo2-2 force
-gluster volume create mongo2-3 stripe 2 transport tcp node02:/opt/mongo2-3 node03:/opt/mongo2-3 node04:/opt/mongo2-3 node05:/opt/mongo2-3 force
+#!/bin/bash
 
-gluster volume start mongo1-2
+source scripts/config
 
-gluster volume quota mongo1-2 enable
+SHARDTEMP="templates/mongo_ep_x.yaml"
+BASE="sources/"
+array=("1" "2" "3")
 
+function generate_ep_yaml()
+    {
+        name="mongo$1-$2"
 
-apiVersion: v1
-kind: Endpoints
-metadata:
-  name: mongo2-3
-subsets:
-- addresses:
-  - ip: 10.60.81.204
-  ports:
-  - port: 1995
-- addresses:
-  - ip: 10.60.81.205
-  ports:
-  - port: 1995
-- addresses:
-  - ip: 10.60.81.206
-  ports:
-  - port: 1995
-- addresses:
-  - ip: 10.60.81.207
-  ports:
-  - port: 1995
-- addresses:
-  - ip: 10.60.81.208
-  ports:
-  - port: 1995
+        gluster volume create $name stripe 2 transport tcp node02:/opt/$name node03:/opt/$name node04:/opt/$name node05:/opt/$name force
+
+        gluster volume start $name
+
+        gluster volume quota $name enable
+
+        new_file_name=$BASE"mongo_ep_$1-$2.yaml"
+        cp $SHARDTEMP $new_file_name
+        sed -i "s/x/$1/g" $new_file_name
+        sed -i "s/y/$2/g" $new_file_name
+        pt=$[1990+$1+$2]
+        sed -i "s/pt/$pt/g" $new_file_name
+        kc apply -f $new_file_name
+    }
+
+for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
+    for element in ${array[@]}
+    do
+    generate_ep_yaml $rs $element
+    if [ $? -ne 0 ]; then
+        echo -e "\033[31m create $new_file_name fail \033[0m"
+    else
+        echo -e "\033[32m create $new_file_name success \033[0m"
+    fi
+    done
+done

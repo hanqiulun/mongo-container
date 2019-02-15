@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mongox-y
+subsets:
+- addresses:
+  - ip: 10.60.81.204
+  ports:
+  - port: pt
+- addresses:
+  - ip: 10.60.81.205
+  ports:
+  - port: pt
+- addresses:
+  - ip: 10.60.81.206
+  ports:
+  - port: pt
+- addresses:
+  - ip: 10.60.81.207
+  ports:
+  - port: pt
+- addresses:
+  - ip: 10.60.81.208
+  ports:
+  - port: pt

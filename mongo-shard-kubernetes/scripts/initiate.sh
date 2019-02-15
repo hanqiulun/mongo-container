@@ -6,7 +6,7 @@ source scripts/config
 SHARDTEMP="templates/mongo_sh_x.yaml"
 BASE="sources/"
 
-function image()
+function generate_sh_yaml()
     {
       new_file_name=$BASE"mongo_sh_$1.yaml"
       cp $SHARDTEMP $new_file_name
@@ -16,12 +16,13 @@ function image()
     }
 
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
-   image $rs
+   generate_sh_yaml $rs
    if [ $? -ne 0 ]; then
       echo -e "\033[31m create $new_file_name fail \033[0m"
    else
       echo -e "\033[32m create $new_file_name success \033[0m"
    fi
+
 done
 
 
