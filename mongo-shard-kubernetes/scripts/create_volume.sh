@@ -22,7 +22,7 @@ function generate_ep_yaml()
         sed -i "s/y/$2/g" $new_file_name
         pt=$[1990+$1+$2]
         sed -i "s/pt/$pt/g" $new_file_name
-        kc apply -f $new_file_name
+        kubectl apply -f $new_file_name
     }
 
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
