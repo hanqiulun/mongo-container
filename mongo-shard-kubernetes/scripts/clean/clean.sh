@@ -3,7 +3,8 @@
 
 #Including config file
 source scripts/config
-
+source scripts/volume_op.sh
+source scripts/brick_op.sh
 BASE="sources/"
 
 echo -e "Deleting config nodes"
@@ -21,8 +22,8 @@ echo -e "\nDeleting shard yaml"
 
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do
     rm -rf $BASE"mongo_sh_"$rs".yaml"
-    scripts/volume_op.sh delete_volume $rs
-    scripts/brick_op.sh delete_dir $rs
+    delete_volume $rs
+    delete_dir $rs
 done
 
 echo -e "\nDeleting keyfile"
