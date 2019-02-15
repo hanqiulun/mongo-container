@@ -2,7 +2,7 @@
 
 source scripts/config
 
-SHARDTEMP="templates/mongo_ep_x.yaml"
+EPTEMP="templates/mongo_ep_x.yaml"
 BASE="sources/"
 array=("1" "2" "3")
 
@@ -35,7 +35,7 @@ function create_volume()
                 gluster volume quota $name enable
 
                 new_file_name=$BASE"mongo_ep_$1-$element.yaml"
-                cp $SHARDTEMP $new_file_name
+                cp $EPTEMP $new_file_name
                 sed -i "s/x/$1/g" $new_file_name
                 sed -i "s/y/$element/g" $new_file_name
                 pt=$[1990+$1+$element]

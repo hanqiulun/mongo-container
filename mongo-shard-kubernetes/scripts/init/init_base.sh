@@ -46,7 +46,9 @@ do
   kubectl get pods | grep "mongos[0-9]" | grep "ContainerCreating"
 done
 
+
 #create root user
+sleep 10
 POD_NAME=$(kubectl get pods | grep "mongos1" | awk '{print $1;}')
 mongo_command=$(cat scripts/init/create_user.js)
 kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$mongo_command'"
