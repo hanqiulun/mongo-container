@@ -58,7 +58,6 @@ function init_shard()
     {
         generate_depand $1
         generate_sh_yaml $1
-        sleep 10
         add_shard $1
     }
 
