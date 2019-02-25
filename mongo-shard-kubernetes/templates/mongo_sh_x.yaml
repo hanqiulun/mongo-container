@@ -1,3 +1,4 @@
+
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -127,12 +128,14 @@ spec:
           containerPort: 27017
         volumeMounts:
           - name: mongoshx-1
-            mountPath: /mongoshx-1/db
+            mountPath: /mongo/db
           - name: keyfile
             mountPath: "/data/keyfile"
             readOnly: true
+          - name: mongoconf
+            mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["--noprealloc", "--smallfiles", "--shardsvr", "--replSet", "rsx", "--dbpath","/mongoshx-1/db", "--port", "27017", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
+        args: ["-f", "/conf/mongod.conf"]
       volumes:
         - name: keyfile
           secret:
@@ -141,6 +144,9 @@ spec:
         - name: mongoshx-1
           persistentVolumeClaim:
            claimName: mongoshx-pvc-1
+        - name: mongoconf
+          configMap:
+            name: mongoconfx
 ---
 # Mongo shard replica set 1 node 2
 apiVersion: v1
