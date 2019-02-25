@@ -50,8 +50,11 @@ done
 #create root user
 sleep 10
 POD_NAME=$(kubectl get pods | grep "mongos1" | awk '{print $1;}')
-mongo_command=$(cat scripts/init/create_user.js)
-kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$mongo_command'"
+mongo_command_root=$(cat scripts/init/create_user_root.js)
+kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$mongo_command_root'"
+
+mongo_command_adm=$(cat scripts/init/create_user_adm.js)
+kubectl exec -it $POD_NAME -- bash -c "mongo -uroot -p root --eval '$mongo_command_adm'"
 
 echo -e "\033[32m All done!!! \033[0m"
 
