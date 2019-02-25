@@ -11,7 +11,8 @@ chmod 600 keyfile
 
 kubectl create secret generic keyfile --from-file=keyfile
 
-
+kubectl create configmap mongo-config --from-file=$BASE"mongod_config.conf"
+kubectl create configmap mongo-mongos --from-file=$BASE"mongod_mongos.conf"
 
 #Creating config nodes
 kubectl create -f  $BASE"mongo_config.yaml"
@@ -50,8 +51,11 @@ done
 #create root user
 sleep 10
 POD_NAME=$(kubectl get pods | grep "mongos1" | awk '{print $1;}')
-mongo_command=$(cat scripts/init/create_user.js)
+mongo_command=$(cat scripts/init/create_user_root.js)
 kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$mongo_command'"
+sleep 2
+mongo_command=$(cat scripts/init/create_user_user.js)
+kubectl exec -it $POD_NAME -- bash -c "mongo -u root -p root --eval '$mongo_command'"
 
 echo -e "\033[32m All done!!! \033[0m"
 

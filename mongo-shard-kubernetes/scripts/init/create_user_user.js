@@ -1,15 +1,6 @@
 var db = db.getSiblingDB("admin");
 db.createUser(
     {
-        user: "root",
-        pwd: "root",
-        roles:
-            [
-                { role: "root", db: "admin" },
-            ]
-    })
-db.createUser(
-    {
         user: "clusterAdmin",
         pwd: "clusterAdmin",
         roles:
