@@ -53,8 +53,6 @@ spec:
         - name: mongoconf
           configMap:
             name: mongo-mongos
-#          persistentVolumeClaim:
-#            claimName: mongos1
 ---
 apiVersion: v1
 kind: Service
@@ -111,5 +109,3 @@ spec:
         - name: mongoconf
           configMap:
             name: mongo-mongos
-#          persistentVolumeClaim:
-#            claimName: mongos2
