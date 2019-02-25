@@ -40,7 +40,7 @@ spec:
             - name: mongoconf
               mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf/mongod.conf"]
+        args: ["-f", "/conf/mongod.conf/mongod_config.conf"]
       volumes:
         - name: keyfile
           secret:
@@ -93,7 +93,7 @@ spec:
             - name: mongoconf
               mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf/mongod.conf"]
+        args: ["-f", "/conf/mongod.conf/mongod_config.conf"]
       volumes:
         - name: keyfile
           secret:
@@ -146,7 +146,7 @@ spec:
             - name: mongoconf
               mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf/mongod.conf"]
+        args: ["-f", "/conf/mongod.conf/mongod_config.conf"]
       volumes:
         - name: keyfile
           secret:
