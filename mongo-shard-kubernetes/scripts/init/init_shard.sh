@@ -45,6 +45,7 @@ function add_shard()
         CMD="rs.initiate({ _id : \"rs$1\", members: [{ _id : 0, host : \"mongosh$1-1:27017\" },{ _id : 1, host : \"mongosh$1-2:27017\" },{ _id : 2, host : \"mongosh$1-3:27017\" }]})"
         #Executing cmd inside pod
         echo $CMD
+        sleep 10
         kubectl exec -it $POD_NAME -- bash -c "mongo --eval '$CMD'"
         # #Adding shard to cluster
         POD_NAME=$(kubectl get pods | grep "mongos1" | awk '{print $1;}')
