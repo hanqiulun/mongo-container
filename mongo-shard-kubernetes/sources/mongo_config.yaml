@@ -38,9 +38,9 @@ spec:
             - name: mongocfg1
               mountPath: /data/db
             - name: mongoconf
-              mountPath: "/conf"
+              mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf"]
+        args: ["-f", "/conf/mongod.conf/mongod.conf"]
       volumes:
         - name: keyfile
           secret:
@@ -91,9 +91,9 @@ spec:
             - name: mongocfg2
               mountPath: /data/db
             - name: mongoconf
-              mountPath: "/conf"
+              mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf"]
+        args: ["-f", "/conf/mongod.conf/mongod.conf"]
       volumes:
         - name: keyfile
           secret:
@@ -144,9 +144,9 @@ spec:
             - name: mongocfg3
               mountPath: /data/db
             - name: mongoconf
-              mountPath: "/conf"
+              mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf"]
+        args: ["-f", "/conf/mongod.conf/mongod.conf"]
       volumes:
         - name: keyfile
           secret:
