@@ -37,19 +37,16 @@ spec:
               readOnly: true
             - name: mongocfg1
               mountPath: /data/db
-            - name: mongoconf
-              mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf/mongod_config.conf"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile", "--wiredTigerCacheSizeGB", "0.3"]
       volumes:
         - name: keyfile
           secret:
             secretName: keyfile
             defaultMode: 0400
-        - name: mongoconf
-          configMap:
-            name: mongo-config
         - name: mongocfg1
+          #persistentVolumeClaim:
+          #  claimName: mongocfg1
 ---
 apiVersion: v1
 kind: Service
@@ -90,19 +87,16 @@ spec:
               readOnly: true
             - name: mongocfg2
               mountPath: /data/db
-            - name: mongoconf
-              mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf/mongod_config.conf"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile", "--wiredTigerCacheSizeGB", "0.3"]
       volumes:
         - name: keyfile
           secret:
             secretName: keyfile
             defaultMode: 0400
-        - name: mongoconf
-          configMap:
-            name: mongo-config
         - name: mongocfg2
+          #persistentVolumeClaim:
+          #  claimName: mongocfg2
 ---
 apiVersion: v1
 kind: Service
@@ -143,16 +137,13 @@ spec:
               readOnly: true
             - name: mongocfg3
               mountPath: /data/db
-            - name: mongoconf
-              mountPath: "/conf/mongod.conf"
         command: ["mongod"]
-        args: ["-f", "/conf/mongod.conf/mongod_config.conf"]
+        args: ["--noprealloc", "--smallfiles", "--replSet", "cfgrs", "--dbpath","/data/db", "--configsvr", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile", "--wiredTigerCacheSizeGB", "0.3"]
       volumes:
         - name: keyfile
           secret:
             secretName: keyfile
             defaultMode: 0400
-        - name: mongoconf
-          configMap:
-            name: mongo-config
         - name: mongocfg3
+          #persistentVolumeClaim:
+          #  claimName: mongocfg3

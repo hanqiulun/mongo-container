@@ -7,7 +7,6 @@ source scripts/brick_op.sh
 
 SHARDTEMP="templates/mongo_sh_x.yaml"
 BASE="sources/"
-CONFTEMP="templates/mongod_x.conf"
 
 #Creating shard nodes
 
@@ -19,13 +18,8 @@ function generate_depand()
     }
 function generate_sh_yaml()
     {
-      new_conf_name=$BASE"mongod_$1.conf"
-      cp $CONFTEMP $new_conf_name
-      sed -i "s/rsx/rs$1/g" $new_conf_name
-      kubectl create configmap mongoconf$1 --from-file=$new_conf_name
       new_file_name=$BASE"mongo_sh_$1.yaml"
       cp $SHARDTEMP $new_file_name
-      sed -i "s/mongoconfx/mongoconf$1/g" $new_file_name
       sed -i "s/mongoshx/mongosh$1/g" $new_file_name
       sed -i "s/rsx/rs$1/g" $new_file_name
       sed -i "s/mongox/mongo$1/g" $new_file_name
