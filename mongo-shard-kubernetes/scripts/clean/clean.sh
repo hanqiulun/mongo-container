@@ -9,8 +9,7 @@ BASE="sources/"
 
 echo -e "Deleting config nodes"
 kubectl delete -f  $BASE"mongo_config.yaml"
-kubectl delete -f  $BASE"mongod_config.conf"
-
+kubectl delete configmaps mongo-config
 
 echo -e "\nDeleting shard nodes"
 for ((rs=1; rs<=$SHARD_REPLICA_SET; rs++)) do

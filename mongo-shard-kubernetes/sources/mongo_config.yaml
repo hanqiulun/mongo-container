@@ -38,8 +38,7 @@ spec:
             - name: mongocfg1
               mountPath: /data/db
             - name: mongoconf
-              mountPath: "/conf/mongod.conf"
-              subPath: "mongod.conf"
+              mountPath: "/conf"
         command: ["mongod"]
         args: ["-f", "/conf/mongod.conf"]
       volumes:
@@ -92,8 +91,7 @@ spec:
             - name: mongocfg2
               mountPath: /data/db
             - name: mongoconf
-              mountPath: "/conf/mongod.conf"
-              subPath: "mongod.conf"
+              mountPath: "/conf"
         command: ["mongod"]
         args: ["-f", "/conf/mongod.conf"]
       volumes:
@@ -146,8 +144,7 @@ spec:
             - name: mongocfg3
               mountPath: /data/db
             - name: mongoconf
-              mountPath: "/conf/mongod.conf"
-              subPath: "mongod.conf"
+              mountPath: "/conf"
         command: ["mongod"]
         args: ["-f", "/conf/mongod.conf"]
       volumes:
