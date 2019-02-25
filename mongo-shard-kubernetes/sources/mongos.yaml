@@ -40,19 +40,16 @@ spec:
               readOnly: true
             - name: mongos1
               mountPath: /data/db
-            - name: mongoconf
-              mountPath: "/conf/mongod.conf"
         command: ["mongos"]
-        args: ["-f", "/conf/mongod.conf"]
+        args: ["--configdb", "cfgrs/mongocfg1:27019,mongocfg2:27019,mongocfg3:27019", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
             secretName: keyfile
             defaultMode: 0400
         - name: mongos1
-        - name: mongoconf
-          configMap:
-            name: mongo-mongos
+#          persistentVolumeClaim:
+#            claimName: mongos1
 ---
 apiVersion: v1
 kind: Service
@@ -96,16 +93,13 @@ spec:
               readOnly: true
             - name: mongos2
               mountPath: /data/db
-            - name: mongoconf
-              mountPath: "/conf/mongod.conf"
         command: ["mongos"]
-        args: ["-f", "/conf/mongod.conf"]
+        args: ["--configdb", "cfgrs/mongocfg1:27019,mongocfg2:27019,mongocfg3:27019", "--bind_ip_all", "--keyFile", "/data/keyfile/keyfile"]
       volumes:
         - name: keyfile
           secret:
             secretName: keyfile
             defaultMode: 0400
         - name: mongos2
-        - name: mongoconf
-          configMap:
-            name: mongo-mongos
+#          persistentVolumeClaim:
+#            claimName: mongos2

@@ -12,7 +12,6 @@ chmod 600 keyfile
 kubectl create secret generic keyfile --from-file=keyfile
 
 kubectl create configmap mongo-config --from-file=$BASE"mongod_config.conf"
-kubectl create configmap mongo-mongos --from-file=$BASE"mongod_mongos.conf"
 
 #Creating config nodes
 kubectl create -f  $BASE"mongo_config.yaml"
